@@ -10,6 +10,8 @@
 		private $inputDataMap;
 
 		function __construct($caseId, $method, $inputDataMap){
+			parent::__construct();
+			$this->log = Logger::getLogger(__CLASS__);
 			$this->caseId = $caseId;
 			$this->method = $method;
 			$this->inputDataMap = $inputDataMap;
@@ -35,18 +37,30 @@
 		}
 
 		private function getUser(){
+			$this->log->info(H_LINE);
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$userDao = new UserDao();
-			return $userDao->getUser($this->caseId);
+			$response = $userDao->getUser($this->caseId);
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
+			return $response;
 		}
 
 		private function createUser(){
+			$this->log->info(H_LINE);
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$userDao = new UserDao();
-			return $userDao->createUser($this->inputDataMap);
+			$response = $userDao->createUser($this->inputDataMap);
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
+			return $response;
 		}
 
 		private function updateUser(){
+			$this->log->info(H_LINE);
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$userDao = new UserDao();
-			return $userDao->updateUser($this->inputDataMap, $this->caseId);
+			$response = $userDao->updateUser($this->inputDataMap, $this->caseId);
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
+			return $response;
 		}
 
 	}

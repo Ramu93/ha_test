@@ -1,0 +1,16 @@
+<configuration xmlns="http://logging.apache.org/log4php/">
+ 
+    <appender name="myConsoleAppender" class="LoggerAppenderConsole" />
+    
+    <appender name="honeyCakesFileAppender" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%date [%logger] %message%newline" />
+        </layout>
+        <param name="file" value="Honeycakes-log.log" />
+    </appender>
+    
+    <root>
+        <level value="DEBUG" />
+        <appender_ref ref="honeyCakesFileAppender" />
+    </root>
+</configuration>

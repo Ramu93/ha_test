@@ -9,11 +9,13 @@
 		private $tableName = 'cakes';
 
 		function __construct(){
-			$this->establishConnection();
+			parent::__construct();
+			$this->log = Logger::getLogger(__CLASS__);
 			$this->db = new DBWrapper($this->dbc);
 		}
 
 		public function getCakesList(){
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$query = "SELECT * FROM $this->tableName";
 			$db = $this->db;
 			$resultMap = $db->selectOperation($query);
@@ -24,6 +26,7 @@
 				$result['resultData'][$iterator]['cakeName'] = $resultMap['result_data'][$iterator]['cake_name'];
 				$result['resultData'][$iterator]['cakeStatus'] = $resultMap['result_data'][$iterator]['cake_status'];
 			}
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
 			return $result;
 		}
 		

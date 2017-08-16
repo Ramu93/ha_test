@@ -9,11 +9,13 @@
 		private $tableName = 'users';
 
 		function __construct(){
-			$this->establishConnection();
+			parent::__construct();
+			$this->log = Logger::getLogger(__CLASS__);
 			$this->db = new DBWrapper($this->dbc);
 		}
 
 		public function getUser($userId){
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$query = "SELECT * FROM $this->tableName WHERE user_id='$userId'";
 			$db = $this->db;
 			$resultMap = $db->selectOperation($query);
@@ -26,10 +28,12 @@
 				$result['resultData'][$iterator]['mobile'] = $resultMap['result_data'][$iterator]['mobile'];
 				$result['resultData'][$iterator]['dob'] = $resultMap['result_data'][$iterator]['date_of_birth'];
 			}
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
 			return $result;
 		}
 
 		public function createUser($inputDataMap){			
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$dbDataMap = array();
 			$dbDataMap['first_name'] = $inputDataMap['firstName'];
 			$dbDataMap['last_name'] = $inputDataMap['lastName'];
@@ -42,10 +46,12 @@
 			$result['status'] = $resultMap['status'];
 			$result['lastCreatedUserId'] = $resultMap['last_insert_id'];
 			$result['affectedRows'] = $resultMap['affected_rows'];
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
 			return $result;
 		}
 
 		public function updateUser($inputDataMap, $userId){
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$dbDataMap = array();
 			$dbDataMap['first_name'] = $inputDataMap['firstName'];
 			$dbDataMap['last_name'] = $inputDataMap['lastName'];
@@ -60,6 +66,7 @@
 			$this->closeConnection();
 			$result['status'] = $resultMap['status'];
 			$result['affectedRows'] = $resultMap['affected_rows'];
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
 			return $result;
 		}
 		

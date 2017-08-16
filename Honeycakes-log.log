@@ -1,0 +1,70 @@
+2017-08-16T20:20:31+02:00 [Cake] *************************************************
+2017-08-16T20:20:31+02:00 [Cake] getCakesList execution starts
+2017-08-16T20:20:31+02:00 [CakeDao] getCakesList execution starts
+2017-08-16T20:20:31+02:00 [DBWrapper] selectOperation execution starts
+2017-08-16T20:20:31+02:00 [DBWrapper] QUERY: 
+SELECT * FROM cakes
+2017-08-16T20:20:31+02:00 [DBWrapper] selectOperation execution ends
+2017-08-16T20:20:31+02:00 [CakeDao] closeConnection execution starts
+2017-08-16T20:20:31+02:00 [CakeDao] closeConnection execution ends
+2017-08-16T20:20:31+02:00 [CakeDao] getCakesList execution ends
+2017-08-16T20:20:31+02:00 [Cake] getCakesList execution ends
+2017-08-16T20:20:34+02:00 [User] *************************************************
+2017-08-16T20:20:34+02:00 [User] createUser execution starts
+2017-08-16T20:20:34+02:00 [UserDao] createUser execution starts
+2017-08-16T20:20:34+02:00 [DBWrapper] insertOperation execution starts
+2017-08-16T20:20:34+02:00 [DBWrapper] QUERY: 
+INSERT INTO users ( first_name,last_name,email,mobile,date_of_birth ) VALUES ( 'ramu','ramasamy','ramu.rulez@gmail.com','9894130821','1993-09-02')
+2017-08-16T20:20:34+02:00 [DBWrapper] QUERY RESULT: 
+Array
+(
+    [status] => success
+    [last_insert_id] => 15
+    [affected_rows] => 1
+)
+
+2017-08-16T20:20:34+02:00 [DBWrapper] insertOperation execution ends
+2017-08-16T20:20:34+02:00 [UserDao] closeConnection execution starts
+2017-08-16T20:20:34+02:00 [UserDao] closeConnection execution ends
+2017-08-16T20:20:34+02:00 [UserDao] createUser execution ends
+2017-08-16T20:20:34+02:00 [User] createUser execution ends
+2017-08-16T20:20:59+02:00 [User] *************************************************
+2017-08-16T20:20:59+02:00 [User] updateUser execution starts
+2017-08-16T20:20:59+02:00 [UserDao] updateUser execution starts
+2017-08-16T20:20:59+02:00 [DBWrapper] updateOperation execution starts
+2017-08-16T20:20:59+02:00 [DBWrapper] QUERY: 
+UPDATE users SET first_name = 'ramu',last_name = 'rama',email = 'ramu.rulez@gmail.com',mobile = '9894130821',date_of_birth = '1993-09-02'  WHERE user_id = '15'
+2017-08-16T20:20:59+02:00 [DBWrapper] QUERY RESULT: 
+Array
+(
+    [status] => success
+    [affected_rows] => 1
+)
+
+2017-08-16T20:20:59+02:00 [DBWrapper] updateOperation execution ends
+2017-08-16T20:20:59+02:00 [UserDao] closeConnection execution starts
+2017-08-16T20:20:59+02:00 [UserDao] closeConnection execution ends
+2017-08-16T20:20:59+02:00 [UserDao] updateUser execution ends
+2017-08-16T20:20:59+02:00 [User] updateUser execution ends
+2017-08-16T20:22:01+02:00 [User] *************************************************
+2017-08-16T20:22:01+02:00 [User] getUser execution starts
+2017-08-16T20:22:01+02:00 [UserDao] getUser execution starts
+2017-08-16T20:22:01+02:00 [DBWrapper] selectOperation execution starts
+2017-08-16T20:22:01+02:00 [DBWrapper] QUERY: 
+SELECT * FROM users WHERE user_id='2'
+2017-08-16T20:22:01+02:00 [DBWrapper] selectOperation execution ends
+2017-08-16T20:22:01+02:00 [UserDao] closeConnection execution starts
+2017-08-16T20:22:01+02:00 [UserDao] closeConnection execution ends
+2017-08-16T20:22:01+02:00 [UserDao] getUser execution ends
+2017-08-16T20:22:01+02:00 [User] getUser execution ends
+2017-08-16T20:28:31+02:00 [User] *************************************************
+2017-08-16T20:28:31+02:00 [User] getUser execution starts
+2017-08-16T20:28:31+02:00 [UserDao] getUser execution starts
+2017-08-16T20:28:31+02:00 [DBWrapper] selectOperation execution starts
+2017-08-16T20:28:31+02:00 [DBWrapper] QUERY: 
+SELECT * FROM users WHERE user_id='2'
+2017-08-16T20:28:31+02:00 [DBWrapper] selectOperation execution ends
+2017-08-16T20:28:31+02:00 [UserDao] closeConnection execution starts
+2017-08-16T20:28:31+02:00 [UserDao] closeConnection execution ends
+2017-08-16T20:28:31+02:00 [UserDao] getUser execution ends
+2017-08-16T20:28:31+02:00 [User] getUser execution ends

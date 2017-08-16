@@ -10,6 +10,8 @@
 		private $inputDataMap;
 
 		function __construct($caseId, $method, $inputDataMap){
+			parent::__construct();
+			$this->log = Logger::getLogger(__CLASS__);
 			$this->caseId = $caseId;
 			$this->method = $method;
 			$this->inputDataMap = $inputDataMap;
@@ -29,8 +31,12 @@
 		}
 
 		private function getCakesList(){
+			$this->log->info(H_LINE);
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$userDao = new CakeDao();
-			return $userDao->getCakesList();
+			$response = $userDao->getCakesList();
+			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
+			return $response;
 		}
 
 	}
