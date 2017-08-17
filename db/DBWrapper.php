@@ -1,7 +1,7 @@
 <?php
 
 	require_once __DIR__ . '/../utils/Constants.php';
-	require_once __DIR__ . '/../log4php/Logger.php';
+	require_once __DIR__ . '/../lib/log4php/Logger.php';
 	Logger::configure(__DIR__ . '/../config/logger-config.xml');
 
 	/**
