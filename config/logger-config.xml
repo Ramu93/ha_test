@@ -6,7 +6,7 @@
         <layout class="LoggerLayoutPattern">
             <param name="conversionPattern" value="%date [%logger] %message%newline" />
         </layout>
-        <param name="file" value="Honeycakes-log.log" />
+        <param name="file" value="logs/Honeycakes-log.log" />
     </appender>
     
     <root>
