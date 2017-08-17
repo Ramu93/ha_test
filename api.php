@@ -41,7 +41,7 @@
 
 	/** 
 	 * executeUserCase method instantiates User object and executes the action 
-	 * @returns $response
+	 * @return $response
 	 */
 	function executeUserCase(){
 		global $method, $data, $caseId;
@@ -53,7 +53,7 @@
 
 	/** 
 	 * executeCakeCase method instantiates Cake object and executes the action 
-	 * @returns $response
+	 * @return $response
 	 */
 	function executeCakeCase(){
 		global $method, $data, $caseId;
