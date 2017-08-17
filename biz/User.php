@@ -3,12 +3,21 @@
 	require_once 'Honey.php';
 	require_once __DIR__ . '/../dao/UserDao.php';
 
+	/**
+	 * @author Ramu Ramasamy
+	 * 
+	 */
 	class User extends Honey{
 
 		private $caseId;
 		private $method;
 		private $inputDataMap;
 
+		/**
+		 * @param $caseId
+		 * @param $method
+		 * @param $inputDataMap
+		 */
 		function __construct($caseId, $method, $inputDataMap){
 			parent::__construct();
 			$this->log = Logger::getLogger(__CLASS__);
@@ -17,7 +26,12 @@
 			$this->inputDataMap = $inputDataMap;
 		}
 
-		//overridded function
+		/**
+		 * @override
+		 * 
+		 * exexuteAction method is used to get the execute the requested action based on the 
+		 * HTTP method.
+		 */
 		public function executeAction(){
 			$result = array();
 			switch($this->method){
@@ -36,6 +50,11 @@
 			return $result;
 		}
 
+		/**
+		 * getUser method is used to fetch the user based on the user ID by using DAO.
+		 * 
+		 * @return $response;
+		 */
 		private function getUser(){
 			$this->log->info(H_LINE);
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
@@ -45,6 +64,11 @@
 			return $response;
 		}
 
+		/**
+		 * createUser method is used to create a new user by using DAO.
+		 * 
+		 * @return $response;
+		 */
 		private function createUser(){
 			$this->log->info(H_LINE);
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
@@ -54,6 +78,11 @@
 			return $response;
 		}
 
+		/**
+		 * updateUser method is used to update a user based on the user ID by using DAO.
+		 * 
+		 * @return $response;
+		 */
 		private function updateUser(){
 			$this->log->info(H_LINE);
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);

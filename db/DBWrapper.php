@@ -4,6 +4,12 @@
 	require_once __DIR__ . '/../log4php/Logger.php';
 	Logger::configure(__DIR__ . '/../config/logger-config.xml');
 
+	/**
+	 * DBWrapper is responsible for all CRUD operations 
+	 * 
+	 * @author Ramu Ramasamy
+	 * 
+	 */
 	class DBWrapper {
 		private $db;
 		private $log; 
@@ -12,6 +18,11 @@
 			$this->log = Logger::getLogger(__CLASS__);
 		}
 
+		/**
+		 * runQuery method is used to prepare and execute the query.
+		 * 
+		 * @return $response;
+		 */
 		public function runQuery($query){
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$stmt = $this->db->prepare($query);
@@ -21,6 +32,13 @@
 			return $result;
 		}
 
+		/**
+		 * insertOperation method is used to insert data.
+		 * 
+		 * @param $tableName
+		 * @param $inputData
+		 * @return $result;
+		 */
 		public function insertOperation($tableName, $inputData, $spl = ''){
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 	        $output = array();
@@ -48,6 +66,13 @@
 	        return $output;
 	    }
 
+	    /**
+		 * updateOperation method is used to insert data.
+		 * 
+		 * @param $tableName
+		 * @param $inputData
+		 * @return $result;
+		 */
 	    public function updateOperation($tableName, $inputData, $whereClause){
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 	        $whereQuery = array(); 
@@ -83,6 +108,12 @@
 	        return $output;
 	    }
 
+	    /**
+		 * selectOperation method is used to insert data.
+		 * 
+		 * @param $query
+		 * @return $result;
+		 */
 	    public function selectOperation($query) {
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$this->log->debug(QUERY . NEW_LINE . $query);

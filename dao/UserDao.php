@@ -14,6 +14,11 @@
 			$this->db = new DBWrapper($this->dbc);
 		}
 
+		/**
+		 * getUser method is used to fetch the user based on the user ID.
+		 * 
+		 * @return $response;
+		 */
 		public function getUser($userId){
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$query = "SELECT * FROM $this->tableName WHERE user_id='$userId'";
@@ -32,6 +37,11 @@
 			return $result;
 		}
 
+		/**
+		 * createUser method is used to create a new user.
+		 * 
+		 * @return $response;
+		 */
 		public function createUser($inputDataMap){			
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$dbDataMap = array();
@@ -50,6 +60,11 @@
 			return $result;
 		}
 
+		/**
+		 * updateUser method is used to update a user based on the user ID.
+		 * 
+		 * @return $response;
+		 */
 		public function updateUser($inputDataMap, $userId){
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$dbDataMap = array();

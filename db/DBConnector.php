@@ -4,6 +4,13 @@
 	require_once __DIR__ . '/../log4php/Logger.php';
 	Logger::configure(__DIR__ . '/../config/logger-config.xml');
 
+	/**
+	 * DBConnector class is responsible for establishing DB connections and closing them.
+	 * All classes under dao directory extends DBConnector.
+	 * 
+	 * @author Ramu Ramasamy
+	 * 
+	 */
 	class DBConnector {
 		//Set the configuration of your MySQL server
 		private $dbServername = 'localhost';
@@ -14,6 +21,9 @@
 		protected $dbc; 
 		protected $log;
 
+		/**
+		 * establishes DB connection and instantiates log4php.
+		 */
 		function __construct(){
 			$this->log = Logger::getLogger(__CLASS__);
 			$this->dbc = mysqli_connect ($this->dbServername,$this->dbUsername,$this->dbPassword,$this->dbName);
@@ -23,6 +33,9 @@
 			}
 		}
 
+		/**
+		 * closes the DB connection
+		 */
 		protected function closeConnection(){
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			mysqli_close($this->dbc);

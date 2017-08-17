@@ -3,6 +3,10 @@
 	require_once __DIR__ . '/../db/DBConnector.php';
 	require_once __DIR__ . '/../db/DBWrapper.php';
 
+	/**
+	 * @author Ramu Ramasamy
+	 * 
+	 */
 	class CakeDao extends DBConnector {
 
 		private $db;
@@ -14,6 +18,11 @@
 			$this->db = new DBWrapper($this->dbc);
 		}
 
+		/**
+		 * getCakesList method is used to fetch all the cakes list.
+		 * 
+		 * @return $response;
+		 */
 		public function getCakesList(){
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			$query = "SELECT * FROM $this->tableName";
