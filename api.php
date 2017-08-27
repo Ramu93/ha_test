@@ -15,9 +15,9 @@
 
 	/** Gets the JSON input from HTTP request and converts it to an associative array */
 	$data = json_decode(file_get_contents('php://input'),true);
-	
+
 	/** $case holds the ID value that is passed as the second param in the URL. Default value
-	 * for $case is -1 
+	 * for $case is -1
 	 */
 	$case = $request[0];
 	$caseId = -1;
