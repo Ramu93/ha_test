@@ -8,11 +8,14 @@
 	 * DBWrapper is responsible for all CRUD operations 
 	 * 
 	 * @author Ramu Ramasamy
+	 * @version 1.0
 	 * 
 	 */
 	class DBWrapper {
+
 		private $db;
 		private $log; 
+
 		function __construct($dbObj){
 			$this->db = $dbObj;
 			$this->log = Logger::getLogger(__CLASS__);
@@ -55,9 +58,9 @@
 	    	
 	        if(mysqli_query($this->db, $query)){
 	            $last_insert_id = mysqli_insert_id($this->db);
-	            $output = array("status" => "success", "last_insert_id" => $last_insert_id, "affected_rows" => mysqli_affected_rows($this->db));
+	            $output = array("status" => SUCCESS, "last_insert_id" => $last_insert_id, "affected_rows" => mysqli_affected_rows($this->db));
 	        }else{
-	            $output = array("status" => "failed", "error_details" => mysqli_error($this->db), "affected_rows" => mysqli_affected_rows($this->db));
+	            $output = array("status" => FAILURE, "error_details" => mysqli_error($this->db), "affected_rows" => mysqli_affected_rows($this->db));
 	        }
 	        //file_put_contents("testlog.log", "\n".$query."\nOutput : ".print_r($output, true), FILE_APPEND | LOCK_EX);
 	        
@@ -97,9 +100,9 @@
 
 	        if(mysqli_query($this->db, $query)){
 	            //$last_insert_id = mysqli_insert_id($this->db);
-	            $output = array("status" => "success", "affected_rows" => mysqli_affected_rows($this->db));
+	            $output = array("status" => SUCCESS, "affected_rows" => mysqli_affected_rows($this->db));
 	        }else{
-	            $output = array("status" => "failed", "error_details" => mysqli_error($this->db), "affected_rows" => mysqli_affected_rows($this->db));
+	            $output = array("status" => FAILURE, "error_details" => mysqli_error($this->db), "affected_rows" => mysqli_affected_rows($this->db));
 	        }
 	        //file_put_contents("testlog.log", "\n".$query."\nOutput : ".print_r($output, true), FILE_APPEND | LOCK_EX);
 
@@ -109,7 +112,7 @@
 	    }
 
 	    /**
-		 * selectOperation method is used to insert data.
+		 * selectOperation method is used to fetch data.
 		 * 
 		 * @param $query
 		 * @return $result;

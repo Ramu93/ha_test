@@ -3,6 +3,10 @@
 	require_once __DIR__ . '/../db/DBConnector.php';
 	require_once __DIR__ . '/../db/DBWrapper.php';
 
+	/**
+	 * @author Ramu Ramasamy
+	 * @version 1.0
+	 */
 	class UserDao extends DBConnector {
 
 		private $db;

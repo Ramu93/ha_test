@@ -1,10 +1,15 @@
 <?php
+	
+	require_once 'auth/Authenticator.php';
+	require_once 'utils/Token.php';
+	require_once 'utils/Constants.php';
 
 	require_once 'biz/User.php';
 	require_once 'biz/Cake.php';
 	
 	/**
 	 * @author Ramu Ramasamy
+	 * @version 1.0
 	 */
 
 
@@ -27,10 +32,13 @@
 
 	/** determines the case and executes the corresponding method */
 	switch ($case) {
-	  case 'user':
+		case 'login':
+			$response = loginUser();
+			break;
+	  	case 'user':
 		  	$response = executeUserCase();
 		  	break;
-	  case 'cakes':
+	  	case 'cakes':
 		  	$response = executeCakeCase();
 		  	break;
 	}
@@ -39,8 +47,40 @@
 	header('Content-Type: application/json');
 	echo json_encode($response);
 
+	
+	/**
+	 * loginUser method establishes a new session for the user by generating a token.
+	 * 
+	 * @return response	
+	 */
+	function loginUser(){
+		global $method, $data;
+		$response = array();
+		if($method == 'POST'){
+			$auth = new Authenticator($data['loginId'], $data['password']);
+			if($auth->checkIfUserExists()){
+				if($auth->comparePassword()){
+					$userId = $auth->getUserId();
+					$tokenObj = new Token($userId);
+					$response = $tokenObj->generateToken();
+				} else {
+					$response['status'] = FAILURE;
+					$response['message'] = INCORRECT_PASSWORD;
+				}
+			} else {
+				$response['status'] = FAILURE;
+				$response['message'] = USER_DOES_NOT_EXIST;
+			}
+		} else {
+			$response['status'] = FAILURE;
+			$response['message'] = INVALID_REQUEST;
+		}
+		return $response;
+	}
+
 	/** 
-	 * executeUserCase method instantiates User object and executes the action 
+	 * executeUserCase method instantiates User object and executes the action. 
+	 * 
 	 * @return $response
 	 */
 	function executeUserCase(){
@@ -52,7 +92,8 @@
 	}
 
 	/** 
-	 * executeCakeCase method instantiates Cake object and executes the action 
+	 * executeCakeCase method instantiates Cake object and executes the action. 
+	 * 
 	 * @return $response
 	 */
 	function executeCakeCase(){

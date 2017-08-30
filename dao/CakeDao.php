@@ -5,7 +5,7 @@
 
 	/**
 	 * @author Ramu Ramasamy
-	 * 
+	 * @version 1.0
 	 */
 	class CakeDao extends DBConnector {
 
@@ -28,7 +28,7 @@
 			$query = "SELECT * FROM $this->tableName";
 			$db = $this->db;
 			$resultMap = $db->selectOperation($query);
-			$this->closeConnection();
+			$this->closeConnection();		
 			$result['rowCount'] = $resultMap['row_count'];
 			for($iterator = 0; $iterator < $resultMap['row_count']; $iterator++){
 				$result['resultData'][$iterator]['cakeId'] = $resultMap['result_data'][$iterator]['cake_id'];

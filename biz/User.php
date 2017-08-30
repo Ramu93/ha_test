@@ -5,7 +5,7 @@
 
 	/**
 	 * @author Ramu Ramasamy
-	 * 
+	 * @version 1.0
 	 */
 	class User extends Honey{
 
