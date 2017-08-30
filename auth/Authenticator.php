@@ -60,7 +60,7 @@
 			if($resultMap['result_data'][0]['password'] == $utils->generateSafeString($userInputPassword)){
 				$isMatching = true;
 			}
-			file_put_contents("testlog.log", "\n".print_r($resultMap, true), FILE_APPEND | LOCK_EX);
+			// file_put_contents("testlog.log", "\n".print_r($resultMap, true), FILE_APPEND | LOCK_EX);
 			return $isMatching;
 		}
 
@@ -75,7 +75,7 @@
 			$query = "SELECT user_id FROM " . USERS . " WHERE email='$loginId' OR mobile='$loginId'";
 			$db = $this->db;
 			$resultMap = $db->selectOperation($query);
-			file_put_contents("testlog.log", "\n".print_r($resultMap, true), FILE_APPEND | LOCK_EX);
+			// file_put_contents("testlog.log", "\n".print_r($resultMap, true), FILE_APPEND | LOCK_EX);
 			$userId = $resultMap['result_data'][0]['user_id'];
 			return $userId;
 		}
