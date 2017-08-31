@@ -42,7 +42,9 @@
 	if($case == CASE_LOGIN){
 		$response = loginUser();
 	} else {
-		$token = $_GET['token'];
+		if(isset($_GET['token'])){
+			$token = $_GET['token'];
+		}
 	}
 
 	/** checks if the token is valid. If the token is valid then the case is executed */
@@ -59,7 +61,13 @@
 	} else if($case != CASE_LOGIN){
 		$response = array();
 		$response['status'] = UNAUTH_ACCESS;
-		$response['message'] = LOGIN_AGAIN;
+		$cause = getTokenInvalidCause($token);
+		if($cause == UNAUTH_1){
+			$message = UNAUTH_CAUSE_1;
+		} else {
+			$message = UNAUTH_CAUSE_2;
+		}
+		$response['message'] = $message;
 	}
 
 	
@@ -76,8 +84,20 @@
 	 */
 	function isTokenValid($token){
 		$tokenObj = new Token();
-		$isValid = $tokenObj->checkTokenValidity($token);
+		$isValid = ($tokenObj->checkTokenValidity($token))['isTokenValid'];
 		return $isValid;
+	}
+
+	/**
+	 * getTokenInvalidCause method finds the reason what made the token ivalid.
+	 * 
+	 * @param token
+	 * @return isValid
+	 */
+	function getTokenInvalidCause($token){
+		$tokenObj = new Token();
+		$cause = ($tokenObj->checkTokenValidity($token))['cause'];
+		return $cause;
 	}
 
 	/**

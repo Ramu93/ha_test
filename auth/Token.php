@@ -3,6 +3,7 @@
 	require_once __DIR__ . '/../db/DBConnector.php';
 	require_once __DIR__ . '/../db/DBWrapper.php';
 	require_once __DIR__ . '/../utils/CommonUtils.php';
+	require_once __DIR__ . '/../utils/Constants.php';
 	require_once __DIR__ . '/../utils/TableNameConstants.php';
 
 	/**
@@ -66,10 +67,11 @@
 		 * returns true if the token is vaild
 		 * 
 		 * @param token
-		 * @return isTokenValid
+		 * @return tokenData
 		 */
 		public function checkTokenValidity($token){
-			$isTokenValid = true;
+			$tokenData = array();
+			$tokenData['isTokenValid'] = true;
 			$query = "SELECT * FROM " . TOKENS . " WHERE token='$token'";
 			$db = $this->db;
 			$resultMap = $db->selectOperation($query);
@@ -77,13 +79,15 @@
 				$expiringTime = $resultMap['result_data'][0]['valid_till'];
 				$currentTimeStamp = date("Y-m-d H:i:s");
 				if($currentTimeStamp >= $expiringTime){
-					$isTokenValid = false;
+					$tokenData['isTokenValid'] = false;
+					$tokenData['cause'] = UNAUTH_2;
 				}
 			} else {
-				$isTokenValid = false;
+				$tokenData['isTokenValid'] = false;
+				$tokenData['cause'] = UNAUTH_1;
 			}
 			
-			return $isTokenValid;
+			return $tokenData;
 		}
 
 		/**

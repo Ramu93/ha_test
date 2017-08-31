@@ -15,7 +15,10 @@
 	define('USER_DOES_NOT_EXIST', 'Entered user does not exist. Check email/mobile.');
 	define('INVALID_REQUEST', 'Invalid request.');
 	define('UNAUTH_ACCESS', 'unauthorized_access');
-	define('LOGIN_AGAIN', 'Unauthorized access. Please login.');
+	define('UNAUTH_1', 'UNAUTH_1');
+	define('UNAUTH_2', 'UNAUTH_2');
+	define('UNAUTH_CAUSE_1', 'Unauthorized access. Please login.');
+	define('UNAUTH_CAUSE_2', 'Session timed out. Please login again.');
 	define('H_LINE', '*************************************************');
 
 ?>
