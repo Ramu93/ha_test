@@ -1,5 +1,8 @@
 <?php
-
+	
+	define('POST', 'POST');
+	define('PUT', 'PUT');
+	define('GET', 'GET');
 	define('METHOD_STARTS', 'execution starts');
 	define('METHOD_ENDS', 'execution ends');
 	define('SUCCESS', 'success');
@@ -11,6 +14,8 @@
 	define('INCORRECT_PASSWORD', 'Incorrect password. Check your password.');
 	define('USER_DOES_NOT_EXIST', 'Entered user does not exist. Check email/mobile.');
 	define('INVALID_REQUEST', 'Invalid request.');
+	define('UNAUTH_ACCESS', 'unauthorized_access');
+	define('LOGIN_AGAIN', 'Unauthorized access. Please login.');
 	define('H_LINE', '*************************************************');
 
 ?>

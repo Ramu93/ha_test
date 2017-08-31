@@ -36,7 +36,7 @@
 		/**
 		 * closes the DB connection
 		 */
-		protected function closeConnection(){
+		public function closeConnection(){
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_STARTS);
 			mysqli_close($this->dbc);
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);

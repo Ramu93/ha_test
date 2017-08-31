@@ -29,8 +29,8 @@
 			$db = $this->db;
 			$resultMap = $db->selectOperation($query);
 			$this->closeConnection();
-			$result['rowCount'] = $resultMap['row_count'];
-			for($iterator = 0; $iterator < $resultMap['row_count']; $iterator++){
+			$result['rowCount'] = $resultMap['rowCount'];
+			for($iterator = 0; $iterator < $resultMap['rowCount']; $iterator++){
 				$result['resultData'][$iterator]['firstName'] = $resultMap['result_data'][$iterator]['first_name'];
 				$result['resultData'][$iterator]['lastName'] = $resultMap['result_data'][$iterator]['last_name'];
 				$result['resultData'][$iterator]['email'] = $resultMap['result_data'][$iterator]['email'];
@@ -58,8 +58,13 @@
 			$resultMap = $db->insertOperation($this->tableName, $dbDataMap);
 			$this->closeConnection();
 			$result['status'] = $resultMap['status'];
-			$result['lastCreatedUserId'] = $resultMap['last_insert_id'];
-			$result['affectedRows'] = $resultMap['affected_rows'];
+			if($resultMap['status'] == SUCCESS){
+				$result['lastCreatedUserId'] = $resultMap['last_insert_id'];
+				$result['affectedRows'] = $resultMap['affected_rows'];
+			} else {
+				$result['errorDetails'] = $resultMap['error_details'];
+				$result['affectedRows'] = $resultMap['affected_rows'];
+			}
 			$this->log->info(__FUNCTION__ . SPACE . METHOD_ENDS);
 			return $result;
 		}

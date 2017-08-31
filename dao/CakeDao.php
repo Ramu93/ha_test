@@ -29,8 +29,8 @@
 			$db = $this->db;
 			$resultMap = $db->selectOperation($query);
 			$this->closeConnection();		
-			$result['rowCount'] = $resultMap['row_count'];
-			for($iterator = 0; $iterator < $resultMap['row_count']; $iterator++){
+			$result['rowCount'] = $resultMap['rowCount'];
+			for($iterator = 0; $iterator < $resultMap['rowCount']; $iterator++){
 				$result['resultData'][$iterator]['cakeId'] = $resultMap['result_data'][$iterator]['cake_id'];
 				$result['resultData'][$iterator]['cakeName'] = $resultMap['result_data'][$iterator]['cake_name'];
 				$result['resultData'][$iterator]['cakeStatus'] = $resultMap['result_data'][$iterator]['cake_status'];

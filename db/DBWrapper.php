@@ -124,7 +124,7 @@
 	    	$result = mysqli_query($this->db, $query);
 	    	$resultData = array();
 	    	$numRows = mysqli_num_rows($result);
-	    	$output['row_count'] = $numRows;
+	    	$output['rowCount'] = $numRows;
 	    	if($numRows > 0){
 	    		while($row = mysqli_fetch_assoc($result)){
 	    			$resultData[] = $row;
