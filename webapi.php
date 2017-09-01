@@ -64,17 +64,27 @@
 		$cause = getTokenInvalidCause($token);
 		if($cause == UNAUTH_1){
 			$message = UNAUTH_CAUSE_1;
+			setHttpStatus(401);
 		} else {
 			$message = UNAUTH_CAUSE_2;
+			setHttpStatus(408);
 		}
 		$response['message'] = $message;
 	}
 
-	
-
 	/** API Response - JSON */
 	header('Content-Type: application/json');
 	echo json_encode($response);
+
+
+	/** 
+	* setHttpStatus method is used to set the http status code  
+	* 
+	* @param statusCode 
+	*/
+	function setHttpStatus($statusCode) {
+		http_response_code($statusCode);
+	}
 
 	/**
 	 * isTokenValid method checks if the token is valid.
