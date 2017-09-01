@@ -18,7 +18,7 @@
 	define('UNAUTH_1', 'UNAUTH_1');
 	define('UNAUTH_2', 'UNAUTH_2');
 	define('UNAUTH_CAUSE_1', 'Unauthorized access. Please login.');
-	define('UNAUTH_CAUSE_2', 'Session timed out. Please login again.');
+	define('UNAUTH_CAUSE_2', 'Session expired. Please login again.');
 	define('H_LINE', '*************************************************');
 
 ?>
